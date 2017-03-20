@@ -1,11 +1,20 @@
 sudo: requires
+compiler: gcc
+dist: trusty
+
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y cmake g++
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq g++-6
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 
 script: |
   set -ex
+  g++ --version
+  cmake --version
   mkdir build 
   cd build 
   cmake ..
