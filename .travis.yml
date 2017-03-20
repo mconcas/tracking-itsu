@@ -1,0 +1,12 @@
+sudo: requires
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y cmake gcc-c++
+
+script: |
+  set -ex
+  mkdir build 
+  cd build 
+  cmake ..
+  make
